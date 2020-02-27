@@ -15,19 +15,19 @@ DOCUMENTATION = r'''
 module: vmware_guest_rdm
 short_description: Connect or disconnect virtual machine raw data mapped (RDM) disks.
 description:
-    - This module can be used to create add or remove RDM disks belonging to given virtual machine.
+    - This module can add or remove RDM virtual machine's disks.
     - All parameters and VMware object names are case sensitive.
     - RDM device must be attached to VM's ESXi host before addition ! 
-    - Best practice is attach RDM device to every cluster host. (for easy VM migration)
-    - You can manage which controllers will be used for RDM disks connection by 'rdm_controller_bus' option.
-    - Non existing controllers will be create, if they presented in 'rdm_controller_bus'.
-    - Maximum available configuration for 'rdm_controller_bus' is [0, 1, 2, 3]
-    - RDM controlles type must be defined by 'rdm_controller_type', paravirtual is default type. 
-    - All RDM controllers (defined by 'rdm_controller_type') must be the same type.
-    - Maximum slots in paravirtual controller = (15 for VM version < 14) or (64 for VM version >= 14) according to https://configmax.vmware.com
+    - Best practice: Attach each RDM device to every cluster host. (for easy VM migration)
+    - You can manage controller's type for RDM disks connection by I(rdm_controller_bus) option.
+    - Non existing controllers will be create, if they presented in I(rdm_controller_bus).
+    - Maximum available configuration for I(rdm_controller_bus) is [0, 1, 2, 3]
+    - RDM controlles type must be defined by I(rdm_controller_type), C(paravirtual) is default type. 
+    - All RDM controllers (defined by I(rdm_controller_type)) must be the same type.
+    - Maximum slots in C(paravirtual) controller = (15 for VM version < 14) or (64 for VM version >= 14) according to https://configmax.vmware.com
     - RDM compatibility mode - physical.
     - Operating user must has ability to create files on VM's datastore (for RDM link creation).
-    - RDM disk will be remove by wwid, in spite of rdm_controller_bus parameter.
+    - RDM disk will be remove by wwid, in spite of I(rdm_controller_bus) parameter.
     - Be careful while removing disk specified as this may lead to data loss.
 version_added: '2.9'
 author:
@@ -36,7 +36,7 @@ notes:
     - Tested on vSphere 6.0 and 6.7.
     - Tested on fiber channel storage
     - Check before use:
-        - Your vmware accout has permissions to write on vm's datastore
+        - Yours vmware accout has permissions to write on vm's datastore
         - Storage disk attached to vm's host
         - Storage disk operational state = Attached
 requirements:
@@ -61,7 +61,7 @@ options:
      type: str
    datacenter:
      description:
-     - The datacenter name to which virtual machine belongs to.
+     - The virtual machine's datacenter name.
      required: False
      type: str
     state:
@@ -74,7 +74,7 @@ options:
       description:
       - Disk controller type.
       - All controllers used for RDM disk must be same type.
-      - Already existing controllers defined in 'rdm_controller_bus' must be 'rdm_controller_type' type.
+      - Already existing controllers defined in I(rdm_controller_bus) must be I(rdm_controller_type) type.
       type: str
       default: paravirtual
       choices: [paravirtual, lsilogic, buslogic, lsilogicsas]
