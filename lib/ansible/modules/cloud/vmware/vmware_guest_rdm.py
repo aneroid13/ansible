@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Copyright: (c) 2019, Anton Bayandin <anton.bayandin@megafon.ru>
+# Copyright: (c) 2019, Anton Bayandin (@aneroid13)
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
@@ -33,7 +33,7 @@ description:
     - Be careful while removing disk specified as this may lead to data loss.
 version_added: '2.9'
 author:
-    - Anton Bayandin <anton.bayandin@megafon.ru>
+    - Anton Bayandin (@aneroid13)
 notes:
     - Tested on vSphere 6.0 and 6.7.
 requirements:
