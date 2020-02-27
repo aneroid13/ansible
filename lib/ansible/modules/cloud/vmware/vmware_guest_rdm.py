@@ -4,7 +4,11 @@
 # Copyright: (c) 2019, Anton Bayandin (@aneroid13)
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
-from __future__ import absolute_import, division, print_function
+ANSIBLE_METADATA = {
+    'metadata_version': '1.1',
+    'status': ['preview'],
+    'supported_by': 'community'
+}
 
 DOCUMENTATION = r'''
 ---
@@ -30,6 +34,11 @@ author:
     - Anton Bayandin (@aneroid13)
 notes:
     - Tested on vSphere 6.0 and 6.7.
+    - Tested on fiber channel storage
+    - Check before use:
+        - Your vmware accout has permissions to write on vm's datastore
+        - Storage disk attached to vm's host
+        - Storage disk operational state = Attached
 requirements:
     - "python >= 2.7"
     - PyVmomi
@@ -129,9 +138,9 @@ EXAMPLES = r'''
     delegate_to: localhost
 '''
 
-RETURN = r'''
-'''
+RETURN = r''' # '''
 
+from __future__ import absolute_import, division, print_function
 try:
     from pyVmomi import vim, vmodl
 except ImportError: pass
