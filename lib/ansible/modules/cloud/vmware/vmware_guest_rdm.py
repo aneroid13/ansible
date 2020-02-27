@@ -6,12 +6,6 @@
 
 from __future__ import absolute_import, division, print_function
 
-ANSIBLE_METADATA = {
-    'metadata_version': '0.1',
-    'status': ['preview'],
-    'supported_by': 'community'
-}
-
 DOCUMENTATION = r'''
 ---
 module: vmware_guest_rdm
